@@ -27,6 +27,6 @@ public class SGPItemModelProvider extends ItemModelProvider {
 	@SuppressWarnings("SameParameterValue")
 	private void simpleItem(RegistryObject<Item> itemRegistryObject) {
 		withExistingParent(itemRegistryObject.getId().getPath(), new ResourceLocation("item/generated")).texture(
-				"layer0", new ResourceLocation(SGP.MOD_ID, "item/" + itemRegistryObject.getId().getPath()));
+				"layer0", SGP.resourceLocation("item/" + itemRegistryObject.getId().getPath()));
 	}
 }
