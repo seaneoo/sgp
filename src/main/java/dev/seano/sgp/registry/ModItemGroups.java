@@ -21,9 +21,8 @@ public class ModItemGroups {
 	public static final RegistryObject<CreativeModeTab> SGP_TAB = ITEM_GROUPS.register(SGP.MOD_ID,
 			() -> CreativeModeTab.builder().icon(() -> new ItemStack(Items.WHEAT))
 					.title(Component.translatable("itemGroup." + SGP.MOD_ID)).displayItems(
-							(p_270258_, p_259752_) -> ModItems.ITEMS.getEntries()
-									.forEach(itemRegistryObject -> p_259752_.accept(itemRegistryObject.get())))
-					.build());
+							(pParameters, pOutput) -> ModItems.ITEMS.getEntries()
+									.forEach(itemRegistryObject -> pOutput.accept(itemRegistryObject.get()))).build());
 
 	public static void init(IEventBus eventBus) {
 		ITEM_GROUPS.register(eventBus);
