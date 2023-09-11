@@ -2,6 +2,9 @@ package dev.seano.sgp;
 
 import dev.seano.sgp.registry.ModItemGroups;
 import dev.seano.sgp.registry.ModItems;
+
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,7 +28,7 @@ public class SGP {
 	public SGP() {
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-		modEventBus.addListener(event -> LOGGER.info("common setup"));
+		modEventBus.addListener((FMLCommonSetupEvent event) -> LOGGER.info("common setup"));
 
 		ModItems.init(modEventBus);
 		ModItemGroups.init(modEventBus);
