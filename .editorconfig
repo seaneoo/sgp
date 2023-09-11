@@ -15,6 +15,7 @@ ij_continuation_indent_size = 8
 ij_java_imports_layout = $*, |, java.**, |, javax.**, |, *, |, net.minecraft.**, |, net.minecraftforge.**
 ij_java_class_count_to_use_import_on_demand = 999
 ij_java_wrap_long_lines = false
+ij_java_blank_lines_after_class_header = 1
 
 [*.json]
 indent_style = space

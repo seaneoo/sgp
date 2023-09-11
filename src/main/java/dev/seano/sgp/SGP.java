@@ -18,6 +18,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(SGP.MOD_ID)
 public class SGP {
+
 	public static final String MOD_ID = "sgp";
 	private static final Logger LOGGER = LogManager.getLogger(StringUtils.capitalize(MOD_ID));
 
@@ -37,6 +38,7 @@ public class SGP {
 
 	@Mod.EventBusSubscriber(modid = SGP.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 	public static class ClientModEvents {
+
 		@SubscribeEvent
 		public static void onClientSetup(FMLClientSetupEvent event) {
 			LOGGER.info("client setup");

@@ -10,6 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModItems {
+
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, SGP.MOD_ID);
 
 	public static final RegistryObject<Item> EXAMPLE_ITEM = ITEMS.register("example_item",
