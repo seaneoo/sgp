@@ -11,7 +11,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = SGP.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-public class Client {
+public class SGPClient {
 
 	public static void init() {
 		SGP.LOGGER.info("client setup");

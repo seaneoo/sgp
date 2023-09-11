@@ -1,6 +1,6 @@
 package dev.seano.sgp;
 
-import dev.seano.sgp.client.Client;
+import dev.seano.sgp.client.SGPClient;
 import dev.seano.sgp.registry.ModEntityTypes;
 import dev.seano.sgp.registry.ModItemGroups;
 import dev.seano.sgp.registry.ModItems;
@@ -27,7 +27,7 @@ public class SGP {
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
 		modEventBus.addListener((FMLCommonSetupEvent event) -> LOGGER.info("common setup"));
-		modEventBus.addListener((FMLClientSetupEvent event) -> Client.init());
+		modEventBus.addListener((FMLClientSetupEvent event) -> SGPClient.init());
 
 		ModEntityTypes.init(modEventBus);
 		ModItems.init(modEventBus);
