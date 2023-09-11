@@ -1,5 +1,6 @@
 package dev.seano.sgp;
 
+import dev.seano.sgp.registry.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -20,6 +21,9 @@ public class SGP {
     public SGP() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
+
+        ModItems.init(modEventBus);
+
         MinecraftForge.EVENT_BUS.register(this);
     }
 
