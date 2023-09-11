@@ -1,8 +1,8 @@
 package dev.seano.sgp.client;
 
 import dev.seano.sgp.SGP;
-import dev.seano.sgp.client.model.ExampleModel;
-import dev.seano.sgp.client.render.ExampleRenderer;
+import dev.seano.sgp.client.model.GuineaPigModel;
+import dev.seano.sgp.client.render.GuineaPigRenderer;
 import dev.seano.sgp.registry.ModEntityTypes;
 
 import net.minecraftforge.api.distmarker.Dist;
@@ -19,11 +19,11 @@ public class SGPClient {
 
 	@SubscribeEvent
 	public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-		event.registerEntityRenderer(ModEntityTypes.EXAMPLE.get(), ExampleRenderer::new);
+		event.registerEntityRenderer(ModEntityTypes.GUINEA_PIG.get(), GuineaPigRenderer::new);
 	}
 
 	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-		event.registerLayerDefinition(ExampleModel.LAYER_LOCATION, ExampleModel::createBodyLayer);
+		event.registerLayerDefinition(GuineaPigModel.LAYER_LOCATION, GuineaPigModel::createBodyLayer);
 	}
 }

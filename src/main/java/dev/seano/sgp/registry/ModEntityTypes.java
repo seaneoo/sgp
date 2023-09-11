@@ -2,7 +2,7 @@ package dev.seano.sgp.registry;
 
 import dev.seano.sgp.SGP;
 
-import dev.seano.sgp.entity.ExampleEntity;
+import dev.seano.sgp.entity.GuineaPig;
 
 import net.minecraft.world.entity.EntityType;
 
@@ -22,9 +22,9 @@ public class ModEntityTypes {
 	public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(
 			ForgeRegistries.ENTITY_TYPES, SGP.MOD_ID);
 
-	public static final RegistryObject<EntityType<ExampleEntity>> EXAMPLE = ENTITY_TYPES.register("example",
-			() -> EntityType.Builder.of(ExampleEntity::new, MobCategory.CREATURE).sized(1f, 1f)
-					.build(SGP.resourceLocation("example").toString()));
+	public static final RegistryObject<EntityType<GuineaPig>> GUINEA_PIG = ENTITY_TYPES.register(GuineaPig.ID,
+			() -> EntityType.Builder.of(GuineaPig::new, MobCategory.CREATURE).sized(0.625f, 0.25f)
+					.build(SGP.resourceLocation(GuineaPig.ID).toString()));
 
 	public static void init(IEventBus eventBus) {
 		ENTITY_TYPES.register(eventBus);
@@ -32,6 +32,6 @@ public class ModEntityTypes {
 
 	@SubscribeEvent
 	public static void addEntityAttributes(EntityAttributeCreationEvent event) {
-		event.put(EXAMPLE.get(), ExampleEntity.createMobAttributes().build());
+		event.put(GUINEA_PIG.get(), GuineaPig.createGuineaPigAttributes().build());
 	}
 }
