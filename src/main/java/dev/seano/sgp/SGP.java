@@ -1,6 +1,8 @@
 package dev.seano.sgp;
 
+import dev.seano.sgp.registry.ModItemGroups;
 import dev.seano.sgp.registry.ModItems;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,6 +26,7 @@ public class SGP {
 		modEventBus.addListener(this::commonSetup);
 
 		ModItems.init(modEventBus);
+		ModItemGroups.init(modEventBus);
 
 		MinecraftForge.EVENT_BUS.register(this);
 	}
