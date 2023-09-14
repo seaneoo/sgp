@@ -65,12 +65,12 @@ public class GuineaPigModel<T extends Entity> extends AgeableListModel<T> {
 
         PartDefinition rightFrontLeg = partdefinition.addOrReplaceChild("rightFrontLeg",
                 CubeListBuilder.create().texOffs(0, 4)
-                        .addBox(-0.5F, -0.5F, -0.5F, 1.0F, 1.0F, 1.0F, new CubeDeformation(0.0F)),
+                        .addBox(-0.5F, -0.5F, 1.5F, 1.0F, 1.0F, 1.0F, new CubeDeformation(0.0F)),
                 PartPose.offset(-0.75F, 23.5F, -3.25F));
 
         PartDefinition leftFrontLeg = partdefinition.addOrReplaceChild("leftFrontLeg",
                 CubeListBuilder.create().texOffs(12, 0)
-                        .addBox(-0.5F, -0.5F, -0.5F, 1.0F, 1.0F, 1.0F, new CubeDeformation(0.0F)),
+                        .addBox(-0.5F, -0.5F, 1.5F, 1.0F, 1.0F, 1.0F, new CubeDeformation(0.0F)),
                 PartPose.offset(0.75F, 23.5F, -3.25F));
 
         PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 9)
