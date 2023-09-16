@@ -1,5 +1,7 @@
 # Sean's Guinea Pigs
 
+[![Java CI with Gradle](https://github.com/seaneoo/sgp/actions/workflows/gradle.yml/badge.svg)](https://github.com/seaneoo/sgp/actions/workflows/gradle.yml)
+
 Adorable guinea pigs to spruce up your Minecraft world!
 
 ## License
