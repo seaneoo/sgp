@@ -1,4 +1,6 @@
 {
   "item.sgp.example_item": "Example Item",
-  "itemGroup.sgp": "Sean's Guinea Pigs"
+  "itemGroup.sgp": "Sean's Guinea Pigs",
+  "painting.sgp.henrietta_ward.author": "James Ward",
+  "painting.sgp.henrietta_ward.title": "Double Portrait of Henrietta Ward's Pet Guinea Pig"
 }
