@@ -1,6 +1,7 @@
 package dev.seano.sgp.entity
 
 import dev.seano.sgp.registry.SGPEntities
+import dev.seano.sgp.registry.SGPTags.GUINEA_PIG_FOOD
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.ai.goal.*
 import net.minecraft.entity.attribute.DefaultAttributeContainer
@@ -10,13 +11,10 @@ import net.minecraft.entity.passive.AnimalEntity
 import net.minecraft.entity.passive.PassiveEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
-import net.minecraft.item.Items
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.world.World
 
 class GuineaPigEntity(entityType: EntityType<out AnimalEntity>?, world: World?) : AnimalEntity(entityType, world) {
-
-	private val food = arrayOf(Items.WHEAT, Items.APPLE, Items.CARROT, Items.SWEET_BERRIES)
 
 	companion object {
 
@@ -45,7 +43,7 @@ class GuineaPigEntity(entityType: EntityType<out AnimalEntity>?, world: World?) 
 		return SGPEntities.GUINEA_PIG?.create(world)
 	}
 
-	override fun isBreedingItem(stack: ItemStack?): Boolean {
-		return food.any { stack?.isOf(it) ?: false }
+	override fun isBreedingItem(stack: ItemStack): Boolean {
+		return stack.isIn(GUINEA_PIG_FOOD)
 	}
 }
