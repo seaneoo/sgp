@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "sgp",
+  "version": "${version}",
+  "name": "Sean's Guinea Pigs",
+  "description": "",
+  "authors": [
+    "seano"
+  ],
+  "contact": {
+    "homepage": "https://github.com/seaneoo/sgp",
+    "sources": "https://github.com/seaneoo/sgp",
+    "issues": "https://github.com/seaneoo/sgp/issues"
+  },
+  "license": "CC-BY-NC-SA-4.0",
+  "icon": "assets/sgp/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      {
+        "value": "dev.seano.sgp.SGP",
+        "adapter": "kotlin"
+      }
+    ],
+    "client": [
+      {
+        "value": "dev.seano.sgp.SGPClient",
+        "adapter": "kotlin"
+      }
+    ]
+  },
+  "mixins": [
+    "sgp.mixins.json",
+    {
+      "config": "sgp.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.9",
+    "minecraft": "~1.21",
+    "java": ">=21",
+    "fabric-api": "*",
+    "fabric-language-kotlin": "*"
+  }
+}
