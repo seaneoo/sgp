@@ -1,6 +1,7 @@
 package dev.seano.sgp
 
 import dev.seano.sgp.registry.SGPEntities
+import dev.seano.sgp.registry.SGPItems
 import net.fabricmc.api.ModInitializer
 import net.minecraft.util.Identifier
 import org.slf4j.Logger
@@ -17,5 +18,6 @@ object SGP : ModInitializer {
 		logger.info("onInitialize")
 
 		SGPEntities.registerAttributes()
+		SGPItems.populateItemGroups()
 	}
 }
