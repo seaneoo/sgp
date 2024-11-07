@@ -11,9 +11,9 @@ object GuineaPigAnimations {
 
 	val WALKING: Animation = Animation.Builder.create(0.5f).looping().addBoneAnimation(
 		"root", Transformation(
-			Targets.TRANSLATE,
+			Targets.SCALE,
 			Keyframe(0f, AnimationHelper.createRotationalVector(0f, 0f, 0f), Interpolations.CUBIC),
-			Keyframe(0.25f, AnimationHelper.createRotationalVector(0f, 0.25f, 0f), Interpolations.CUBIC),
+			Keyframe(0.25f, AnimationHelper.createRotationalVector(1.01f, 1.01f, 1.01f), Interpolations.CUBIC),
 			Keyframe(0.5f, AnimationHelper.createRotationalVector(0f, 0f, 0f), Interpolations.CUBIC)
 		)
 	).addBoneAnimation(
