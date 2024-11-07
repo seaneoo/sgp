@@ -17,6 +17,7 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 
 class GuineaPigEntity(entityType: EntityType<out AnimalEntity>?, world: World?) : AnimalEntity(entityType, world) {
@@ -70,5 +71,9 @@ class GuineaPigEntity(entityType: EntityType<out AnimalEntity>?, world: World?) 
 
 	override fun isBreedingItem(stack: ItemStack): Boolean {
 		return stack.isIn(GUINEA_PIG_FOOD)
+	}
+
+	override fun getLeashOffset(): Vec3d {
+		return Vec3d(0.0, 0.1875, 0.0)
 	}
 }
