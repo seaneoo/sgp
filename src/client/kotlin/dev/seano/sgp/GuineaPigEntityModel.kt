@@ -5,11 +5,11 @@ import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.minecraft.client.model.*
 import net.minecraft.client.render.VertexConsumer
-import net.minecraft.client.render.entity.model.EntityModel
+import net.minecraft.client.render.entity.model.SinglePartEntityModel
 import net.minecraft.client.util.math.MatrixStack
 
 @Environment(EnvType.CLIENT)
-class GuineaPigEntityModel(root: ModelPart) : EntityModel<GuineaPigEntity>() {
+class GuineaPigEntityModel(root: ModelPart) : SinglePartEntityModel<GuineaPigEntity>() {
 
 	private var root: ModelPart = root.getChild("root")
 
@@ -57,6 +57,10 @@ class GuineaPigEntityModel(root: ModelPart) : EntityModel<GuineaPigEntity>() {
 			}
 	}
 
+	override fun getPart(): ModelPart {
+		return root
+	}
+
 	override fun render(matrices: MatrixStack?, vertices: VertexConsumer?, light: Int, overlay: Int, color: Int) {
 		root.render(matrices, vertices, light, overlay, color)
 	}
@@ -69,6 +73,7 @@ class GuineaPigEntityModel(root: ModelPart) : EntityModel<GuineaPigEntity>() {
 		headYaw: Float,
 		headPitch: Float
 	) {
-
+		part.traverse().forEach { obj: ModelPart -> obj.resetTransform() }
+		this.animateMovement(GuineaPigAnimations.WALKING, limbAngle, limbDistance, 2.0f, 2.5f)
 	}
 }
