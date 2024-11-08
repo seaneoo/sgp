@@ -2,7 +2,10 @@
   "required": true,
   "package": "dev.seano.sgp.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": [
+    "CatEntityMixin",
+    "OcelotEntityMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }
