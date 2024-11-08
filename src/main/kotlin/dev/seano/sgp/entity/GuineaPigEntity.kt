@@ -8,8 +8,11 @@ import net.minecraft.entity.ai.goal.*
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.damage.DamageSource
+import net.minecraft.entity.mob.CreeperEntity
 import net.minecraft.entity.mob.MobEntity
 import net.minecraft.entity.passive.AnimalEntity
+import net.minecraft.entity.passive.CatEntity
+import net.minecraft.entity.passive.OcelotEntity
 import net.minecraft.entity.passive.PassiveEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
@@ -39,8 +42,11 @@ class GuineaPigEntity(entityType: EntityType<out AnimalEntity>?, world: World?) 
 			isBreedingItem(stack)
 		}, false))
 		goalSelector.add(4, FollowParentGoal(this, 1.1))
-		goalSelector.add(5, WanderAroundFarGoal(this, 1.0))
-		goalSelector.add(6, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
+		goalSelector.add(5, FleeEntityGoal(this, CreeperEntity::class.java, 6f, 1.0, 1.25))
+		goalSelector.add(5, FleeEntityGoal(this, OcelotEntity::class.java, 6f, 1.0, 1.25))
+		goalSelector.add(5, FleeEntityGoal(this, CatEntity::class.java, 6f, 1.0, 1.25))
+		goalSelector.add(6, WanderAroundFarGoal(this, 1.0))
+		goalSelector.add(7, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
 		goalSelector.add(7, LookAtEntityGoal(this, GuineaPigEntity::class.java, 4.0f))
 		goalSelector.add(8, LookAroundGoal(this))
 	}
