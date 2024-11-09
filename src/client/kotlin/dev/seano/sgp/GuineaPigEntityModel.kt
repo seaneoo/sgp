@@ -20,18 +20,22 @@ class GuineaPigEntityModel(root: ModelPart) : SinglePartEntityModel<GuineaPigEnt
 			get() {
 				val modelData = ModelData()
 				val modelPartData = modelData.root
-				val root = modelPartData.addChild(
-					"root", ModelPartBuilder.create().uv(0, 0).cuboid(
-						-1.5f, -3.0f, -3.0f, 3.0f, 3.0f, 7.0f, Dilation(0.0f)
-					).uv(0, 10).cuboid(
-						-1.5f, -2.0f, -4.0f, 3.0f, 2.0f, 1.0f, Dilation(0.0f)
-					).uv(0, 0).cuboid(
-						-0.5f, -1.5f, 3.5f, 1.0f, 1.0f, 1.0f, Dilation(0.0f)
-					).uv(2, 2).cuboid(
-						1.0f, -2.5f, -1.5f, 1.0f, 1.0f, 0.0f, Dilation(0.0f)
-					).uv(0, 2).cuboid(
-						-2.0f, -2.5f, -1.5f, 1.0f, 1.0f, 0.0f, Dilation(0.0f)
-					), ModelTransform.pivot(0.0f, 23.5f, 0.0f)
+				val root =
+					modelPartData.addChild("root", ModelPartBuilder.create(), ModelTransform.pivot(0.0f, 23.5f, 0.0f))
+				val body = root.addChild(
+					"body",
+					ModelPartBuilder.create()
+						.uv(0, 0)
+						.cuboid(-1.5f, -1.5f, -2.6f, 3.0f, 3.0f, 7.0f, Dilation(0.0f))
+						.uv(0, 10)
+						.cuboid(-1.5f, -0.5f, -3.6f, 3.0f, 2.0f, 1.0f, Dilation(0.0f))
+						.uv(0, 0)
+						.cuboid(-0.5f, 0.0f, 3.9f, 1.0f, 1.0f, 1.0f, Dilation(0.0f))
+						.uv(2, 2)
+						.cuboid(1.0f, -1.0f, -1.1f, 1.0f, 1.0f, 0.0f, Dilation(0.0f))
+						.uv(0, 2)
+						.cuboid(-2.0f, -1.0f, -1.1f, 1.0f, 1.0f, 0.0f, Dilation(0.0f)),
+					ModelTransform.pivot(0.0f, -1.5f, -0.4f)
 				)
 				val legFL = root.addChild(
 					"legFL", ModelPartBuilder.create().uv(0, 3).cuboid(
