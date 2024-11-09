@@ -4,6 +4,7 @@ import dev.seano.sgp.registry.SGPEntities
 import dev.seano.sgp.registry.SGPTags.GUINEA_PIG_FOOD
 import net.minecraft.block.BlockState
 import net.minecraft.component.DataComponentTypes
+import net.minecraft.entity.AnimationState
 import net.minecraft.entity.EntityStatuses
 import net.minecraft.entity.EntityType
 import net.minecraft.entity.ai.goal.*
@@ -39,6 +40,10 @@ class GuineaPigEntity(entityType: EntityType<out TameableEntity>?, world: World?
 		}
 	}
 
+	val idlingAnimationState = AnimationState()
+	val sittingAnimationState = AnimationState()
+	private var idleAnimationCooldown = 0
+
 	override fun initGoals() {
 		goalSelector.add(0, SwimGoal(this))
 		goalSelector.add(1, TameableEscapeDangerGoal(1.25, DamageTypeTags.PANIC_ENVIRONMENTAL_CAUSES))
@@ -56,6 +61,26 @@ class GuineaPigEntity(entityType: EntityType<out TameableEntity>?, world: World?
 		goalSelector.add(9, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
 		goalSelector.add(9, LookAtEntityGoal(this, GuineaPigEntity::class.java, 4.0f))
 		goalSelector.add(10, LookAroundGoal(this))
+	}
+
+	override fun tick() {
+		super.tick()
+		if (world.isClient()) updateAnimations()
+	}
+
+	private fun updateAnimations() {
+		if (this.idleAnimationCooldown <= 0) {
+			this.idleAnimationCooldown = random.nextInt(40) + 80
+			idlingAnimationState.start(age)
+		} else {
+			idleAnimationCooldown--
+		}
+
+		if (isInSittingPose && isTamed) {
+			sittingAnimationState.startIfNotRunning(age)
+		} else {
+			sittingAnimationState.stop()
+		}
 	}
 
 	override fun getAmbientSound(): SoundEvent? {

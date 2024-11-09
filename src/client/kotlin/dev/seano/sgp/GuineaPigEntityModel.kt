@@ -70,7 +70,7 @@ class GuineaPigEntityModel(root: ModelPart) : SinglePartEntityModel<GuineaPigEnt
 	}
 
 	override fun setAngles(
-		entity: GuineaPigEntity?,
+		entity: GuineaPigEntity,
 		limbAngle: Float,
 		limbDistance: Float,
 		animationProgress: Float,
@@ -79,5 +79,7 @@ class GuineaPigEntityModel(root: ModelPart) : SinglePartEntityModel<GuineaPigEnt
 	) {
 		part.traverse().forEach { obj: ModelPart -> obj.resetTransform() }
 		this.animateMovement(GuineaPigAnimations.WALKING, limbAngle, limbDistance, 2.0f, 2.5f)
+		this.updateAnimation(entity.idlingAnimationState, GuineaPigAnimations.IDLING, animationProgress, 1f)
+		this.updateAnimation(entity.sittingAnimationState, GuineaPigAnimations.SITTING, animationProgress, 1f)
 	}
 }
