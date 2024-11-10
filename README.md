@@ -1,5 +1,7 @@
 # Sean's Guinea Pigs
 
+![](https://cdn.modrinth.com/data/CiE7du5Z/images/813ae77c09fda419b9af33a27646ef026f5e5368.jpeg)
+
 ## Mod Compatibility
 
 Adding support for mods (or other vanilla features) is extremely easy and can be done yourself through the use of[
