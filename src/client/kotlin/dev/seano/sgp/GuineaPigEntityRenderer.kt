@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier
 @Environment(EnvType.CLIENT)
 class GuineaPigEntityRenderer(context: EntityRendererFactory.Context) :
 	MobEntityRenderer<GuineaPigEntity, GuineaPigEntityModel>(
-		context, GuineaPigEntityModel(context.getPart(guineaPigModelLayer)), 0.3f
+		context, GuineaPigEntityModel(context.getPart(guineaPigModelLayer)), 0.2f
 	) {
 
 	companion object {
