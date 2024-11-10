@@ -3,12 +3,12 @@
   "id": "sgp",
   "version": "${version}",
   "name": "Sean's Guinea Pigs",
-  "description": "",
+  "description": "Fill your world with adorable guinea pigs!",
   "authors": [
     "seano"
   ],
   "contact": {
-    "homepage": "https://github.com/seaneoo/sgp",
+    "homepage": "https://modrinth.com/project/sgp",
     "sources": "https://github.com/seaneoo/sgp",
     "issues": "https://github.com/seaneoo/sgp/issues"
   },
