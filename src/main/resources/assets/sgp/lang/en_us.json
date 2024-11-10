@@ -1,4 +1,5 @@
 {
   "entity.sgp.guinea_pig": "Guinea Pig",
-  "item.sgp.guinea_pig_spawn_egg": "Guinea Pig Spawn Egg"
+  "item.sgp.guinea_pig_spawn_egg": "Guinea Pig Spawn Egg",
+  "tag.item.sgp.guinea_pig_food": "Guinea Pig Food Items"
 }
