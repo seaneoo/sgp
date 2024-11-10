@@ -39,7 +39,7 @@ object SGPEntities {
 			AnimalEntity::isValidNaturalSpawn
 		)
 		BiomeModifications.addSpawn(
-			BiomeSelectors.tag(SGPTags.GUINEA_PIG_SPAWN_BIOMES), SpawnGroup.CREATURE, GUINEA_PIG, 100, 3, 5
+			BiomeSelectors.tag(SGPTags.GUINEA_PIG_SPAWN_BIOMES), SpawnGroup.CREATURE, GUINEA_PIG, 5, 3, 5
 		)
 	}
 }
