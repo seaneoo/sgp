@@ -1,3 +1,5 @@
+[![Modrinth Downloads](https://img.shields.io/modrinth/dt/CiE7du5Z?style=flat&logo=modrinth&logoColor=%23ffffff&label=Modrinth&color=%231bd96a)](https://modrinth.com/mod/sgp) [![CurseForge Downloads](https://img.shields.io/curseforge/dt/1138196?style=flat&logo=curseforge&logoColor=%23ffffff&label=CurseForge&color=%23ff784d)](https://www.curseforge.com/minecraft/mc-mods/sgp)
+
 # Sean's Guinea Pigs
 
 ![](https://cdn.modrinth.com/data/CiE7du5Z/images/813ae77c09fda419b9af33a27646ef026f5e5368.jpeg)
