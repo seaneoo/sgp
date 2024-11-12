@@ -1,6 +1,7 @@
 package dev.seano.sgp
 
 import dev.seano.sgp.entity.GuineaPigEntity
+import dev.seano.sgp.entity.GuineaPigVariant
 import dev.seano.sgp.registry.SGPEntities
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
@@ -23,7 +24,12 @@ class GuineaPigEntityRenderer(context: EntityRendererFactory.Context) :
 	}
 
 	override fun getTexture(entity: GuineaPigEntity?): Identifier {
-		return SGP.id("textures/entity/guinea_pig.png")
+		var variant = GuineaPigVariant.CLASSIC
+		if (entity != null) {
+			val curVariant = entity.getVariant()
+			if (curVariant != null) variant = curVariant
+		}
+		return SGP.id("textures/entity/${variant.texture}.png")
 	}
 
 	override fun render(

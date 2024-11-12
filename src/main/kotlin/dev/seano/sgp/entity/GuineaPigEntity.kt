@@ -4,26 +4,31 @@ import dev.seano.sgp.registry.SGPEntities
 import dev.seano.sgp.registry.SGPTags.GUINEA_PIG_FOOD
 import net.minecraft.block.BlockState
 import net.minecraft.component.DataComponentTypes
-import net.minecraft.entity.AnimationState
-import net.minecraft.entity.EntityStatuses
-import net.minecraft.entity.EntityType
+import net.minecraft.entity.*
 import net.minecraft.entity.ai.goal.*
 import net.minecraft.entity.attribute.DefaultAttributeContainer
 import net.minecraft.entity.attribute.EntityAttributes
 import net.minecraft.entity.damage.DamageSource
+import net.minecraft.entity.data.DataTracker
+import net.minecraft.entity.data.TrackedData
+import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.mob.CreeperEntity
 import net.minecraft.entity.mob.MobEntity
 import net.minecraft.entity.passive.*
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
+import net.minecraft.nbt.NbtCompound
 import net.minecraft.registry.tag.DamageTypeTags
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
+import net.minecraft.util.Util
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
+import net.minecraft.world.LocalDifficulty
+import net.minecraft.world.ServerWorldAccess
 import net.minecraft.world.World
 
 class GuineaPigEntity(entityType: EntityType<out TameableEntity>?, world: World?) : TameableEntity(entityType, world) {
@@ -32,6 +37,9 @@ class GuineaPigEntity(entityType: EntityType<out TameableEntity>?, world: World?
 
 		private const val MAX_HEALTH = 6.0
 		private const val TAMED_MAX_HEALTH = 12.0
+		private val VARIANT: TrackedData<Int> =
+			DataTracker.registerData(GuineaPigEntity::class.java, TrackedDataHandlerRegistry.INTEGER)
+
 
 		fun createAttributes(): DefaultAttributeContainer.Builder {
 			return MobEntity.createMobAttributes()
@@ -61,6 +69,36 @@ class GuineaPigEntity(entityType: EntityType<out TameableEntity>?, world: World?
 		goalSelector.add(9, LookAtEntityGoal(this, PlayerEntity::class.java, 6.0f))
 		goalSelector.add(9, LookAtEntityGoal(this, GuineaPigEntity::class.java, 4.0f))
 		goalSelector.add(10, LookAroundGoal(this))
+	}
+
+	fun getVariant(): GuineaPigVariant? {
+		return GuineaPigVariant.byIndex(this.dataTracker.get(VARIANT))
+	}
+
+	private fun setVariant(guineaPigVariant: GuineaPigVariant) {
+		this.dataTracker.set(VARIANT, guineaPigVariant.id)
+	}
+
+	override fun initDataTracker(builder: DataTracker.Builder) {
+		super.initDataTracker(builder)
+		builder.add(VARIANT, 0)
+	}
+
+	override fun readCustomDataFromNbt(nbt: NbtCompound) {
+		super.readCustomDataFromNbt(nbt)
+		getVariant()?.let { nbt.putInt("Variant", it.id) }
+	}
+
+	override fun writeCustomDataToNbt(nbt: NbtCompound) {
+		super.writeCustomDataToNbt(nbt)
+		GuineaPigVariant.byIndex(nbt.getInt("Variant"))?.let { setVariant(it) }
+	}
+
+	override fun initialize(
+		world: ServerWorldAccess?, difficulty: LocalDifficulty?, spawnReason: SpawnReason?, entityData: EntityData?
+	): EntityData? {
+		if (world != null) setVariant(Util.getRandom(GuineaPigVariant.entries.toTypedArray(), world.random))
+		return super.initialize(world, difficulty, spawnReason, entityData)
 	}
 
 	override fun tick() {
@@ -188,6 +226,7 @@ class GuineaPigEntity(entityType: EntityType<out TameableEntity>?, world: World?
 				guineaPigEntity.ownerUuid = this.ownerUuid
 				guineaPigEntity.setTamed(true, true)
 			}
+			entity.getVariant()?.let { guineaPigEntity.setVariant(it) }
 		}
 		return guineaPigEntity
 	}
