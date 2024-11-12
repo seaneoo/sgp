@@ -141,11 +141,6 @@ class GuineaPigEntity(entityType: EntityType<out TameableEntity>?, world: World?
 		this.playSound(SoundEvents.ENTITY_PIG_STEP, 0.15f, 1.0f)
 	}
 
-	override fun getEatSound(stack: ItemStack?): SoundEvent {
-		// TODO 2024-11-9, 13:59 custom sound
-		return SoundEvents.ENTITY_CAT_EAT
-	}
-
 	override fun getLeashOffset(): Vec3d {
 		return Vec3d(0.0, 0.1875, 0.0)
 	}
