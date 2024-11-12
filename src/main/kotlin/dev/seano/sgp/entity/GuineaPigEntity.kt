@@ -219,7 +219,24 @@ class GuineaPigEntity(entityType: EntityType<out TameableEntity>?, world: World?
 		return actionResult
 	}
 
-	override fun createChild(world: ServerWorld?, entity: PassiveEntity): GuineaPigEntity? {
+	override fun breed(world: ServerWorld, other: AnimalEntity) {
+		val children = createMultipleChildren(world, other)
+		children.forEach { child ->
+			child.isBaby = true
+			child.refreshPositionAndAngles(x, y, z, 0f, 0f)
+			this.breed(world, other, child)
+			world.spawnEntityAndPassengers(child)
+		}
+	}
+
+	private fun createMultipleChildren(world: ServerWorld, entity: PassiveEntity): ArrayList<GuineaPigEntity> {
+		val children = ArrayList<GuineaPigEntity>()
+		val numOfChildren = random.nextInt(3)
+		for (i in 0 until numOfChildren) createChild(world, entity)?.let { children.add(it) }
+		return children
+	}
+
+	override fun createChild(world: ServerWorld, entity: PassiveEntity): GuineaPigEntity? {
 		val guineaPigEntity = SGPEntities.GUINEA_PIG?.create(world)
 		if (guineaPigEntity != null && entity is GuineaPigEntity) {
 			if (isTamed) {
