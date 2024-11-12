@@ -86,12 +86,12 @@ class GuineaPigEntity(entityType: EntityType<out TameableEntity>?, world: World?
 
 	override fun readCustomDataFromNbt(nbt: NbtCompound) {
 		super.readCustomDataFromNbt(nbt)
-		getVariant()?.let { nbt.putInt("Variant", it.id) }
+		GuineaPigVariant.byIndex(nbt.getInt("Variant"))?.let { setVariant(it) }
 	}
 
 	override fun writeCustomDataToNbt(nbt: NbtCompound) {
 		super.writeCustomDataToNbt(nbt)
-		GuineaPigVariant.byIndex(nbt.getInt("Variant"))?.let { setVariant(it) }
+		getVariant()?.let { nbt.putInt("Variant", it.id) }
 	}
 
 	override fun initialize(
